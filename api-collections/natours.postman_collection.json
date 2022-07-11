@@ -9,7 +9,144 @@
 			"name": "Get All Tours",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:3001/api/v1/tours",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"tours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paticular Tour",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:3001/api/v1/tours/10",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"tours",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Tour",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Test Tour\",\r\n    \"duration\": \"10\",\r\n    \"difficulty\": \"easy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3001/api/v1/tours",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"tours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Tour",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\" : \"Patch\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3001/api/v1/tours/10",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"tours",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Tour",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\" : \"Patch\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3001/api/v1/tours/10",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"tours",
+						"10"
+					]
+				}
 			},
 			"response": []
 		}
