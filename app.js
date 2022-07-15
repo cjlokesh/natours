@@ -134,17 +134,20 @@ const createUser = (req, res, next) => {
 // app.patch("/api/v1/tours/:id", updateTour);
 // app.delete("/api/v1/tours/:id", deletTour);
 
+// Creating kind of sub app
 const tourRouter = express.Router();
 const userRouter = express.Router();
-app.use("/api/v1/tours", tourRouter);
-app.use("/api/v1/users", userRouter);
 
 tourRouter.route("/").get(getAllTours).post(createTour);
 tourRouter.route("/:id").get(getTour).patch(updateTour).delete(deletTour);
 
-app.route("/").get(getAllUsers).post(createUser);
+userRouter.route("/").get(getAllUsers).post(createUser);
 
-app.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
+userRouter.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
+
+// Middle ware
+app.use("/api/v1/tours", tourRouter);
+app.use("/api/v1/users", userRouter);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
