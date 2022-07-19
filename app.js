@@ -9,6 +9,7 @@ const userRouter = require("./routes/userRoutes");
 const app = express();
 app.use(express.json());
 
+app.use(express.static(`${__dirname}/public`));
 // 2.5 Custom Middele ware - just for completion
 app.use((req, res, next) => {
   console.log("At custom middle ware");
