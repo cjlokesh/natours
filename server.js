@@ -1,9 +1,9 @@
+const dotenv = require('dotenv');
+
 // 0. Get App
-const app = require("./app");
+const app = require('./app');
 
-const dotenv = require("dotenv");
-
-dotenv.config({ path: "./config.env" });
+dotenv.config({ path: './config.env' });
 
 // this env is set by express
 // console.log(app.get("env"));

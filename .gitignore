@@ -1,2 +1,6 @@
 # Ignore Node Modules
 node_modules/
+
+.prettierrc
+
+.eslintrc.json
