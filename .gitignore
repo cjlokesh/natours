@@ -6,3 +6,7 @@ node_modules/
 .eslintrc.json
 
 .env
+
+# Demo codes for reference only
+
+demo_codes/
