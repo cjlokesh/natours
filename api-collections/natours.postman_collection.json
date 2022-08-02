@@ -26,6 +26,43 @@
 								"api",
 								"v1",
 								"tours"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "difficulty",
+									"value": "easy",
+									"disabled": true
+								},
+								{
+									"key": "duration[gte]",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "price[lt]",
+									"value": "1500",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "-price,-ratingsAverage",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "-name,-duration",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -37,7 +74,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1:3001/api/v1/tours/10",
+							"raw": "127.0.0.1:3001/api/v1/tours/62e10427dd5c9c6088f5f13b",
 							"host": [
 								"127",
 								"0",
@@ -49,7 +86,7 @@
 								"api",
 								"v1",
 								"tours",
-								"10"
+								"62e10427dd5c9c6088f5f13b"
 							]
 						}
 					},
@@ -58,11 +95,11 @@
 				{
 					"name": "Create Tour",
 					"request": {
-						"method": "POST",
+						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Test Tour\",\r\n    \"duration\": \"11\",\r\n    \"difficulty\": \"easy\"\r\n}",
+							"raw": "{\r\n    \"name\": \"The Snow Adventurer\",\r\n    \"duration\": 4,\r\n    \"maxGroupSize\": 10,\r\n    \"difficulty\": \"difficult\",\r\n    \"ratingsAverage\": 4.5,\r\n    \"ratingsQuantity\": 13,\r\n    \"price\": 997,\r\n    \"summary\": \"Exciting adventure in the snow with snowboarding and skiing\",\r\n    \"description\": \"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!\\nDolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, exercitation ullamco laboris nisi ut aliquip. Lorem ipsum dolor sit amet, consectetur adipisicing elit!\",\r\n    \"imageCover\": \"tour-3-cover.jpg\",\r\n    \"images\": [\"tour-3-1.jpg\", \"tour-3-2.jpg\", \"tour-3-3.jpg\"],\r\n    \"startDates\": [\"2022-01-05,10:00\", \"2022-02-12,10:00\", \"2023-01-06,10:00\"]\r\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,7 +107,7 @@
 							}
 						},
 						"url": {
-							"raw": "127.0.0.1:3001/api/v1/tours",
+							"raw": "127.0.0.1:3001/api/v1/tours/62dfca172ccf4f48fc21496f",
 							"host": [
 								"127",
 								"0",
@@ -81,7 +118,8 @@
 							"path": [
 								"api",
 								"v1",
-								"tours"
+								"tours",
+								"62dfca172ccf4f48fc21496f"
 							]
 						}
 					},
@@ -94,7 +132,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"message\" : \"Patch\"\r\n}",
+							"raw": "{\r\n    \"ratingsAverage\" : 4.9\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -102,7 +140,7 @@
 							}
 						},
 						"url": {
-							"raw": "127.0.0.1:3001/api/v1/users/10",
+							"raw": "127.0.0.1:3001/api/v1/tours/62e10427dd5c9c6088f5f13b",
 							"host": [
 								"127",
 								"0",
@@ -113,8 +151,8 @@
 							"path": [
 								"api",
 								"v1",
-								"users",
-								"10"
+								"tours",
+								"62e10427dd5c9c6088f5f13b"
 							]
 						}
 					},
@@ -135,7 +173,7 @@
 							}
 						},
 						"url": {
-							"raw": "127.0.0.1:3001/api/v1/users/10",
+							"raw": "127.0.0.1:3001/api/v1/tours/62dfca8f2ccf4f48fc214971",
 							"host": [
 								"127",
 								"0",
@@ -146,8 +184,8 @@
 							"path": [
 								"api",
 								"v1",
-								"users",
-								"10"
+								"tours",
+								"62dfca8f2ccf4f48fc214971"
 							]
 						}
 					},

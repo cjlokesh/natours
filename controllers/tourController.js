@@ -24,18 +24,56 @@ const Tour = require('../models/tourModels');
 
 exports.getAllTours = async (req, res) => {
   try {
+    // BUILD QUERY
+
+    //  1A) Filtering
+
+    // console.log(req.query);
+
     const queryObj = { ...req.query };
+
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
+
     excludedFields.forEach((el) => delete queryObj[el]);
 
-    console.log(req.query, queryObj);
-    const tours = await Tour.find(queryObj);
-    // const tours = await Tour.find()
-    //   .where('duration')
-    //   .equals(5)
-    //   .where('difficulty')
-    //   .equals('easy');
+    // console.log(req.query, queryObj);
 
+    // 1B) Advanced Filtering
+    // {difficulty: 'easy', duration: {$gte: 5} }
+    // { difficulty: 'easy', duration: { gte: '5' } }
+    // gte, gt, lte, lt
+
+    let queryStr = JSON.stringify(queryObj);
+    // console.log('queryStr: ', queryStr);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+
+    let query = Tour.find(JSON.parse(queryStr));
+
+    // 2) Sorting
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      query = query.sort(sortBy);
+      // sort('price ratingsAverage')
+    } else {
+      query = query.sort('-createdAt');
+    }
+
+    // 3) Field Limiting
+
+    if (req.query.fields) {
+      const fields = req.query.fields.split(',').join(' ');
+      // console.log('fields: ', fields);
+      // The below line is called projecting
+      // query = query.select('name duration price');
+      query = query.select(fields);
+    } else {
+      // - is for excluding
+      query = query.select('-__v');
+    }
+    // EXECUTE QUERY
+    const tours = await query;
+
+    // SEND RESPONSE
     res.status(200).json({
       status: 'success',
       results: tours.length,
@@ -124,3 +162,13 @@ exports.deleteTour = async (req, res) => {
     });
   }
 };
+
+// const tours = await Tour.find(req.query);
+
+// {difficulty: 'easy', duration: {$gte: 5} }
+// { difficulty: 'easy', duration: { gte: '5' } }
+// const query = await Tour.find()
+//   .where('duration')
+//   .equals(5)
+//   .where('difficulty')
+//   .equals('easy');
