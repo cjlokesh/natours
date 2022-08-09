@@ -62,7 +62,6 @@ exports.getAllTours = async (req, res) => {
 
     if (req.query.fields) {
       const fields = req.query.fields.split(',').join(' ');
-      // console.log('fields: ', fields);
       // The below line is called projecting
       // query = query.select('name duration price');
       query = query.select(fields);
@@ -70,8 +69,25 @@ exports.getAllTours = async (req, res) => {
       // - is for excluding
       query = query.select('-__v');
     }
+
+    // 4) Pagination
+
+    // Convert query string to number
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 100;
+    const skip = (page - 1) * limit;
+
+    // page=2&limit=10  1-10 Page 1, 11-20 page 2, 21-30 page 3
+    // query = query.skip(2).limit(10);
+    query = query.skip(skip).limit(limit);
+
+    if (req.query.page) {
+      const numTours = await Tour.countDocuments();
+      if (skip >= numTours) throw new Error('This page does not exits');
+    }
     // EXECUTE QUERY
     const tours = await query;
+    // query.sort().select().skip().limit()
 
     // SEND RESPONSE
     res.status(200).json({

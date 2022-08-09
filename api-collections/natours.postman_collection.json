@@ -14,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1:3001/api/v1/tours",
+							"raw": "127.0.0.1:3001/api/v1/tours?limit=3&page=3",
 							"host": [
 								"127",
 								"0",
@@ -28,16 +28,6 @@
 								"tours"
 							],
 							"query": [
-								{
-									"key": "page",
-									"value": "2",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "10",
-									"disabled": true
-								},
 								{
 									"key": "difficulty",
 									"value": "easy",
@@ -55,13 +45,21 @@
 								},
 								{
 									"key": "sort",
-									"value": "-price,-ratingsAverage",
+									"value": "price,ratingsAverage",
 									"disabled": true
 								},
 								{
 									"key": "fields",
-									"value": "-name,-duration",
+									"value": "-id,-name,-duration",
 									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								},
+								{
+									"key": "page",
+									"value": "3"
 								}
 							]
 						}
